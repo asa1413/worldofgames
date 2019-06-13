@@ -3,7 +3,15 @@ node()
      stage("checkout") {
          checkout scm
      }
-    try {
+    try
+
+        {
+         stage("image")
+        {
+           dir('C:\\Users\\arosenzweig\\PycharmProjects\\python\\WorldOfGames'){
+            bat 'docker build . -t asa1413/worldofgames:latest'
+           }
+        }
         stage("build")
         {
            dir('C:\\Users\\arosenzweig\\PycharmProjects\\python\\WorldOfGames'){
@@ -31,7 +39,7 @@ node()
            }
         }
 
-    }
+        }
     catch (err) {
         stage("stop_in fail")
         {
