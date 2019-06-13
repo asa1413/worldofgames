@@ -5,4 +5,4 @@ services:
     build: .
     ports:
       - "8777:8777"
-    image: asa1413/worldofgames
+    image: asa1413/worldofgames:latest

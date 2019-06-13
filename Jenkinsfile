@@ -1,17 +1,15 @@
 node()
 {
-     stage("checkout") {
-         checkout scm
-     }
+
     try
 
         {
          stage("image")
-        {
-           dir('C:\\Users\\arosenzweig\\PycharmProjects\\python\\WorldOfGames'){
+          {
+             dir('C:\\Users\\arosenzweig\\PycharmProjects\\python\\WorldOfGames'){
             bat 'docker build . -t asa1413/worldofgames:latest'
            }
-        }
+          }
         stage("build")
         {
            dir('C:\\Users\\arosenzweig\\PycharmProjects\\python\\WorldOfGames'){
@@ -27,7 +25,7 @@ node()
          stage("stop")
         {
            dir('C:\\Users\\arosenzweig\\PycharmProjects\\python\\WorldOfGames'){
-            bat 'docker-compose stop'
+            bat 'docker-compose down'
            }
         }
 
@@ -44,9 +42,8 @@ node()
         stage("stop_in fail")
         {
            dir('C:\\Users\\arosenzweig\\PycharmProjects\\python\\WorldOfGames'){
-            bat 'docker-compose stop'
+            bat 'docker-compose down'
            }
         }
     }
 }
-
